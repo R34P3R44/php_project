@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/members/home', [MemberController::class, 'home'])->name('home');
+
+Route::post('/members', [MemberController::class, 'store'])->name('members');
+
+Route::get('/schools/{school}/members', [SchoolController::class, 'members'])->name('schoolMembers');
